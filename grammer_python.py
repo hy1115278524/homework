@@ -13,6 +13,12 @@
 #import_stmt | global_stmt | nonlocal_stmt | assert_stmt)
 #from that we clear know that how to form simple_stmt
 
+
+import math
+import math as m, os
+from os import path
+from os.path import sys,getctime
+from os import (path,sys,)
 #expr_stmt
 a = 1
 b = 2
@@ -51,6 +57,10 @@ global q
 #assert_stmt
 assert 1
 
+#yield
+yield i
+yield i,j
+yield from i
 #Next,we are able to discuss compound_stmt
 #compound_stmt: if_stmt | while_stmt | for_stmt | try_stmt |
 #with_stmt | funcdef | classdef | decorated | async_stmt
@@ -102,6 +112,17 @@ finally:
 
 
 
+try:
+    pass
+except ImportError as e:
+    pass
+else:
+    pass
+finally:
+    pass
+
+
+
 #with_stmt
 with open("./t.py") as f:
     pass
@@ -120,6 +141,13 @@ def f(x:int,*args,**kwargs)->(int,int):
     if 1:
         pass
 
+def func(*, **):
+        pass
+
+
+def func(arg1, *, arg2):
+        pass
+
 
 #classdef
 class A:
@@ -127,6 +155,11 @@ class A:
         pass
     class B:
         pass
+
+class MyClass(arg1,arg2=2,*args,**kwargs):
+        pass
+
+
 
 #decorated
 
@@ -145,5 +178,21 @@ async def main():
 
 #lambda
 lambda x: x**2
+l = lambda : x
 
+l = lambda x : x
+
+l = lambda x=1,y=2 : x + y
+
+l = lambda x, y, * : x ** y
+
+l = lambda x, y, *, z : str(x) + str(y) + str(z)
+
+l = lambda x, y, *args, z, **kwargs : x
+
+l = lambda *args, x, **kwargs : x
+
+l = lambda x, **kwargs : x
+
+l = lambda **kwargs : x
 #up to now we can basically to combine python's grammer
