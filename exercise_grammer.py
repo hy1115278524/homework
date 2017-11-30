@@ -72,31 +72,29 @@ def HandleData(PointBox):
     ThirdQuadrant = []
     FourthQuadrant = []
     InfoBox = []
+    QuadrantBox = [FirstQuadrant, SecondQuadrant, ThirdQuadrant, FourthQuadrant]
     Quadrant = ["FirstQuadrant", "SecondQuadrant", "ThirdQuadrant", "FourthQuadrant"]
     for i in range(len(PointBox)):
         if PointBox[i][0] >= 0 and PointBox[i][1] >= 0:
-            FirstQuadrant.append(PointBox[i])
-            theta = math.atan2(PointBox[i][1], PointBox[i][0])
-            InfoBox.append([PointBox[i], Quadrant[0], theta])
+            flag = 0
 
         elif PointBox[i][0] < 0 and PointBox[i][1] >= 0:
-            SecondQuadrant.append(PointBox[i])
-            theta = math.atan2(PointBox[i][1], PointBox[i][0])
-            InfoBox.append([PointBox[i], Quadrant[1], theta])
+            flag = 1
 
         elif PointBox[i][0] <= 0 and PointBox[i][1] < 0:
-            ThirdQuadrant.append(PointBox[i])
-            theta = math.atan2(PointBox[i][1], PointBox[i][0])
-            InfoBox.append([PointBox[i], Quadrant[2], theta])
+            flag = 2
 
         elif PointBox[i][0] > 0 and PointBox[i][1] < 0:
-            FourthQuadrant.append(PointBox[i])
-            theta = math.atan2(PointBox[i][1], PointBox[i][0])
-            InfoBox.append([PointBox[i], Quadrant[3], theta])
+            flag = 3
+        QuadrantBox[flag].append(PointBox[i])
+        theta = math.atan2(PointBox[i][1], PointBox[i][0])
+        InfoBox.append([PointBox[i], Quadrant[flag], theta])
     else:
         for index in range(len(InfoBox)):
-            print("the {0} point {1} belones to {2} quadrant the radian is {3}"\
+            print("the {0} point {1} belones to {2} quadrant the radian is {3}"
                   .format(index+1, InfoBox[index][0], InfoBox[index][1], InfoBox[index][2]))
+        for quadrantmsg in QuadrantBox:
+            print(quadrantmsg)
 
 
 if __name__ == "__main__":
