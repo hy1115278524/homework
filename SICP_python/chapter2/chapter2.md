@@ -88,27 +88,24 @@
             return sum(fib(k) for k in range(1, n+1) if fib(k) % 2 == 0 )
 
 ## 可变数据 ##
-                                                                                                                
-                                                                                                                我们用于创建模块化程序的强大工具之一，是引入可能会随时间改变的新类型数据。这样，单个数据可以表示独立于其他程序演化的东西。对象行为的改变可能会由它的历史影响，就像世界中的实体那样。向数据添加状态是这一章最终目标：面向对象编程的要素。
-                                                                                                                
-                                                                                                                我们目前引入的原生数据类型 -- 数值、布尔值、元组、范围和字符串 -- 都是不可变类型的对象。虽然名称的绑定可以在执行过程中修改为环境中不同的值，但是这些值本身不会改变。这一章中，我们会介绍一组可变数据类型。可变对象可以在程序执行期间改变。
-                                                                                                                
+
+我们用于创建模块化程序的强大工具之一，是引入可能会随时间改变的新类型数据。这样，单个数据可以表示独立于其他程序演化的东西。对象行为的改变可能会由它的历史影响，就像世界中的实体那样。向数据添加状态是这一章最终目标：面向对象编程的要素。
+我们目前引入的原生数据类型 -- 数值、布尔值、元组、范围和字符串 -- 都是不可变类型的对象。虽然名称的绑定可以在执行过程中修改为环境中不同的值，但是这些值本身不会改变。这一章中，我们会介绍一组可变数据类型。可变对象可以在程序执行期
+
 ### 局部状态 ###
-                                                                                                                
-                                                                                                                局部状态是在程序执行期间会发生改变。
-                                                                                                                
-                                                                                                                    >>> def make_withdraw(balance):
-                                                                                                                            ""Return a withdraw function that draws down balance with each call.""
-                                                                                                                                    def withdraw(amount):
-                                                                                                                                                nonlocal balance                 # Declare the name "balance" nonlocal
-                                                                                                                                                            if amount > balance:
-                                                                                                                                                                                return 'Insufficient funds'
-                                                                                                                                                                                            balance = balance - amount       # Re-bind the existing balance name
-                                                                                                                                                                                                        return balance
-                                                                                                                                                                                                                return withdraw
 
-                                                                                                                                                                                                                上面的例子看出我们每调用一次make_withdraw,就会创建一个新的局部栈帧，并且局部栈帧不会立即回收，nonlocal可以使得我们修改balance,使得局部状态发生变化。![](https://i.imgur.com/2JY1opu.png)
+局部状态是在程序执行期间会发生改变。
 
+    >>> def make_withdraw(balance):
+        ""Return a withdraw function that draws down balance with each call.""
+            def withdraw(amount):
+                nonlocal balance                 # Declare the name "balance" nonlocal
+                if amount > balance:
+                    return 'Insufficient funds'
+                balance = balance - amount       # Re-bind the existing balance name
+                return balance
+        return withdraw
+上面的例子看出我们每调用一次make_withdraw,就会创建一个新的局部栈帧，并且局部栈帧不会立即回收，nonlocal可以使得我们修改balance,使得局部状态发生变化。![](https://i.imgur.com/2JY1opu.png)
 ### 非局部赋值 ###
 
 非局部赋值，使得对象彼此相互独立，各自管理自己的局部状态。![](https://i.imgur.com/lsE6udM.png)
