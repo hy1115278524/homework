@@ -20,18 +20,17 @@
 书中介绍了一个关于有理数的算术的具体的例子。
 
     >>> def add_rat(x, y):
-            nx, dx = numer(x), denom(x)
-                    ny, dy = numer(y), denom(y)
-                            return make_rat(nx * dy + ny * dx, dx * dy)
-                                >>> def mul_rat(x, y):
-                                        return make_rat(numer(x) * numer(y), denom(x) * denom(y))
-                                            >>> def eq_rat(x, y):
-                                                    return numer(x) * denom(y) == numer(y) * denom(x)
-
-                                                    make_rat(n, d)返回分子为n和分母为d的有理数。  
-                                                    numer(x)返回有理数x的分子。  
-                                                    denom(x)返回有理数x的分母。  
-                                                    最后利用**元组**来实现数据抽象的具体层面。
+    nx, dx = numer(x), denom(x)
+    ny, dy = numer(y), denom(y)
+    return make_rat(nx * dy + ny * dx, dx * dy)
+    >>> def mul_rat(x, y):
+    return make_rat(numer(x) * numer(y), denom(x) * denom
+    >>> def eq_rat(x, y):
+    return numer(x) * denom(y) == numer(y) * denom(x)
+    make_rat(n, d)返回分子为n和分母为d的有理数。
+    numer(x)返回有理数x的分子.
+    denom(x)返回有理数x的分母.
+    最后利用**元组**来实现数据抽象的具体层面。
 
 ## 抽象界限 ##
 
@@ -65,38 +64,29 @@
  每个函数的具体定义：  
 
      >>> def fib(k):
-             ""Compute the kth Fibonacci number.""  
-                     prev, curr = 1, 0  # curr is the first Fibonacci number.
-                             for _ in range(k - 1):
-                                             prev, curr = curr, prev + curr
-                                                     return curr
-                                                     
-                                                         >>> def iseven(n):
-                                                                 return n % 2 == 0
-                                                                 
-                                                                     >>> nums = (5, 6, -7, -8, 9)
-                                                                     
-                                                                         >>> def sum_even_fibs(n):
-                                                                                 ""Sum the first n even Fibonacci numbers.""
-                                                                                         return sum(filter(iseven, map(fib, range(1, n+1))))
-                                                                                            >>> sum_even_fibs(20)
-                                                                                                3382
-                                                                                                
-                                                                                                
-                                                                                                上面的模式就是映射、过滤和累计，来组合序列的接口约定上的操作。  
-                                                                                                在python中有一种更简洁明了的途径--**生成器表达式**。
-                                                                                                
-                                                                                                **生成器表达式**：
-                                                                                                
-                                                                                                    <map expression> for <name> in <sequence expression> if <filter expression>
-                                                                                                    
-                                                                                                    上面的问题就可以简化为：  
-                                                                                                    
-                                                                                                        >>> def sum_even_fibs(n):
-                                                                                                                return sum(fib(k) for k in range(1, n+1) if fib(k) % 2 == 0)
-                                                                                                                
-                                                                                                                
-                                                                                                                
+        ""Compute the kth Fibonacci number.""  
+            prev, curr = 1, 0  # curr is the first Fibonacci number.
+            for _ in range(k - 1):
+                prev, curr = curr, prev + curr
+                return curr
+    >>> def iseven(n):
+    return n % 2 == 0
+    >>> nums = (5, 6, -7, -8, 9)
+    >>> def sum_even_fibs(n):
+        ""Sum the first n even Fibonacci numbers.""
+            return sum(filter(iseven, map(fib, range(1, n+1))))
+    >>> sum_even_fibs(20)
+        3382
+上面的模式就是映射、过滤和累计，来组合序列的接口约定上的操作.在python中有一种更简洁明了的途径--**生成器表达式**。
+**生成器表达式**：
+
+        <map expression> for <name> in <sequence expression> if <filter expression>
+
+上面的问题就可以简化为：
+
+    >>> def sum_even_fibs(n):
+            return sum(fib(k) for k in range(1, n+1) if fib(k) % 2 == 0 )
+
 ## 可变数据 ##
                                                                                                                 
                                                                                                                 我们用于创建模块化程序的强大工具之一，是引入可能会随时间改变的新类型数据。这样，单个数据可以表示独立于其他程序演化的东西。对象行为的改变可能会由它的历史影响，就像世界中的实体那样。向数据添加状态是这一章最终目标：面向对象编程的要素。
