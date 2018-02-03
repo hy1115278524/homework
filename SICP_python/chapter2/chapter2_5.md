@@ -17,12 +17,11 @@
 对象方法也由class语句中的def语句定义。在类看来，这些在类里面定义的函数就是普通的函数，在实例对象看来这些函数就是方法，因为对象绑定到了第一个参数上。比如A是一个类，其实下面两种写法等效。
     
         a = A()
-            a.fun()等效于A.fun(a)
-
-                >>> type(Account.deposit)
-                    <class 'function'>
-                        >>> type(tom_account.deposit)
-                            <class 'method'>
+        a.fun()等效于A.fun(a)
+        >>> type(Account.deposit)
+        <class 'function'>
+        >>> type(tom_account.deposit)
+        <class 'method'>
                             从上面就可以看出什么时候类型是函数，什么时候类型是方法。
 
 ## 类属性 ##
