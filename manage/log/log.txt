@@ -1,0 +1,8 @@
+2018-03-29 06:18:03,486 - main.py[line:104] - INFO: harden want to deposit 200￥
+2018-03-29 06:18:03,486 - main.py[line:50] - INFO: harden deposit 200￥ Successful!
+2018-03-29 06:18:03,486 - main.py[line:110] - INFO: harden want to draw 50￥
+2018-03-29 06:18:03,487 - main.py[line:50] - INFO: harden draw 50￥ Successful!
+2018-03-29 06:18:03,487 - main.py[line:70] - INFO: harden want to borrow 300￥
+2018-03-29 06:18:03,487 - main.py[line:50] - INFO: harden borrow 300￥ Successful!
+2018-03-29 06:18:03,487 - main.py[line:78] - INFO: harden want to repay 30￥
+2018-03-29 06:18:03,488 - main.py[line:50] - INFO: harden repay 30￥ Successful!
